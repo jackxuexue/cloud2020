@@ -28,4 +28,9 @@ public class OrderController {
         Order orderById = orderService.getOrderById(id);
         return AjaxResult.success("查询成功" + port, orderById);
     }
+
+    @GetMapping("/lb")
+    public String getLb(){
+        return port;
+    }
 }
