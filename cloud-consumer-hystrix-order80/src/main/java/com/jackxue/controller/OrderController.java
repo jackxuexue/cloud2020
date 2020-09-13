@@ -25,7 +25,7 @@ public class OrderController {
 
     @GetMapping("/consumer/payment/hystrix/timeout/{id}")
     @HystrixCommand(fallbackMethod = "paymentTimeOutFallbackMethod",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "5500")  //3秒钟以内就是正常的业务逻辑
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")  //3秒钟以内就是正常的业务逻辑
     })
     public String paymentTimeout(@PathVariable("id") Integer id){
         String result = orderService.paymentTimeout(id);
@@ -38,4 +38,11 @@ public class OrderController {
         return "jack==="+"我是消费者80，对付支付系统繁忙请10秒钟后再试或者自己运行出错请检查自己,(┬＿┬)";
     }
 
+    @GetMapping("/consumer/payment/hystrix/testHystrix/{id}")
+    public String paymentTestHystrix(@PathVariable("id") Integer id){
+//        String result = "test";
+        String result = orderService.paymentTestHystrix(id);
+        log.info("*******result:"+ result);
+        return result;
+    }
 }
