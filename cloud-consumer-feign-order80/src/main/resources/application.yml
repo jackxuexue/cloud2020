@@ -1,0 +1,22 @@
+server:
+  port: 81
+
+spring:
+  application:
+    name: cloud-consumer-feign-order
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eurekaserver1.com:7001/eureka, http://eurekaserver2.com:7002/eureka
+
+ribbon:
+  ReadTimeout:  5000
+  ConnectTimeout: 5000
+
+
+logging:
+  level:
+    com.jackxue.service.ConsumerOrderService: debug

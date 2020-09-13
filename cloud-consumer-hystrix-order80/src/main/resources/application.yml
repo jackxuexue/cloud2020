@@ -1,0 +1,17 @@
+server:
+  port: 6001
+spring:
+  application:
+    name: cloud-provider-hystrix-order
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eurekaserver1.com:7001/eureka
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 5000
