@@ -11,9 +11,6 @@ public class PaymentService {
         return "线程：" + Thread.currentThread().getName() + "paymentOk, id" + id;
     }
 
-    @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")  //3秒钟以内就是正常的业务逻辑
-    })
     public String paymentTimeout(Integer id){
 //        int i = 10/0;
         try {
